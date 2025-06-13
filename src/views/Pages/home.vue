@@ -4,6 +4,7 @@ import CreateListe from "@/components/molecules/ajoutListe.vue";
 import ListeName from "@/components/molecules/listeName.vue";
 import Liste from "@/components/molecules/liste.vue";
 import AjoutCarte from "@/components/molecules/ajoutCarte.vue";
+import Cart from "@/components/molecules/cart.vue";
 import { ref, onMounted } from "vue";
 
 onMounted(() => {

@@ -17,11 +17,13 @@ export const taches = [
       { id: 1, nom: "UI", couleur: "#3498db" },
       { id: 2, nom: "Urgent", couleur: "#e74c3c" },
     ],
-    acteur: {
-      id: 101,
-      nom: "Alice Dupont",
-      photo: "alice.jpg",
-    },
+    acteur: [
+      {
+        id: 101,
+        nom: "Alice Dupont",
+        photo: "alice.jpg",
+      },
+    ],
     liste: {
       id: 1,
       nom: "À faire",
