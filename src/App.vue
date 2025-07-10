@@ -11,4 +11,4 @@ console.log("app");
   <RouterView />
 </template>
 
-<style scoped></style>
+<style></style>

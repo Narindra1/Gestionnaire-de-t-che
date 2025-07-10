@@ -1,28 +1,58 @@
 <script setup>
 import dashboardLayout from "../Layout/dashboardLayout.vue";
-import CreateListe from "@/components/molecules/ajoutListe.vue";
-import ListeName from "@/components/molecules/listeName.vue";
-import Liste from "@/components/molecules/liste.vue";
-import AjoutCarte from "@/components/molecules/ajoutCarte.vue";
-import Cart from "@/components/molecules/cart.vue";
-import { ref, onMounted } from "vue";
+import List from "@/components/organisms/list.vue";
+import { getLists } from "@/services/cartList";
 
-onMounted(() => {
+import { ref, onMounted } from "vue";
+let load = ref(true);
+let listes = ref([]);
+
+onMounted(async () => {
+  listes.value = getLists();
   console.log("home mounted");
+  setTimeout(function () {
+    load.value = false;
+  }, 2000);
 });
 </script>
 
 <template>
   <dashboardLayout>
-    <div class="m-[20px] flex flex-row gap-10">
-      <div class="flex flex-col gap-2">
-        <Liste />
-        <AjoutCarte />
+    <div
+      v-if="load"
+      class="flex justify-center items-center w-full h-full bg-white"
+    >
+      <div
+        class="animate-[spin_2s_linear_infinite] rounded-full h-[40px] w-[40px]"
+      >
+        <svg
+          height="40px"
+          width="40px"
+          id="Layer_1"
+          style="enable-background: new 0 0 16 16"
+          version="1.1"
+          viewBox="0 0 16 16"
+          xml:space="preserve"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <path
+            d="M8,0C7.448,0,7,0.448,7,1v2c0,0.552,0.448,1,1,1s1-0.448,1-1V1C9,0.448,8.552,0,8,0z M8,12c-0.552,0-1,0.447-1,1v2  c0,0.553,0.448,1,1,1s1-0.447,1-1v-2C9,12.447,8.552,12,8,12z M12.242,5.172l1.414-1.415c0.391-0.39,0.391-1.024,0-1.414  c-0.39-0.391-1.023-0.391-1.414,0l-1.414,1.414c-0.391,0.391-0.391,1.024,0,1.415C11.219,5.562,11.852,5.562,12.242,5.172z   M3.757,10.828l-1.414,1.414c-0.391,0.391-0.391,1.024,0,1.414c0.39,0.391,1.023,0.391,1.414,0l1.414-1.414  c0.391-0.391,0.391-1.023,0-1.414C4.781,10.438,4.148,10.438,3.757,10.828z M3.757,2.343c-0.391-0.391-1.024-0.391-1.414,0  c-0.391,0.39-0.391,1.024,0,1.414l1.414,1.415c0.391,0.39,1.024,0.39,1.414,0c0.391-0.391,0.391-1.024,0-1.415L3.757,2.343z   M12.242,10.828c-0.391-0.391-1.023-0.391-1.414,0s-0.391,1.023,0,1.414l1.414,1.414c0.391,0.391,1.024,0.391,1.414,0  c0.391-0.39,0.391-1.023,0-1.414L12.242,10.828z M15,7h-2c-0.553,0-1,0.448-1,1s0.447,1,1,1h2c0.553,0,1-0.448,1-1S15.553,7,15,7z   M4,8c0-0.552-0.448-1-1-1H1C0.448,7,0,7.448,0,8s0.448,1,1,1h2C3.552,9,4,8.552,4,8z"
+          />
+        </svg>
       </div>
-      <div class="flex flex-col gap-2">
-        <CreateListe />
-        <ListeName />
+    </div>
+
+    <div
+      v-else
+      class="flex flex-row gap-10 py-5 px-3 h-full w-full overflow-x-scroll overflow-y-hidden"
+    >
+      <div class="flex gap-5 items-start">
+        <template class="" v-for="liste in listes" :key="liste.id">
+          <List :liste="liste" />
+        </template>
       </div>
     </div>
   </dashboardLayout>
 </template>
+<style></style>

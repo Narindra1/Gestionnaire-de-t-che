@@ -1,8 +1,6 @@
-<script setup>
-import User from "@/components/atoms/user.vue";
-</script>
+<script setup></script>
 <template>
-  <div class="h-[60px] flex justify-between px-5 bg-gray-800 p-4">
+  <div class="flex justify-between items-center px-5 bg-gray-800 h-full">
     <div class="gauche">
       <div class="flex gap-4 text-center">
         <div class="flex gap-2 items-center">
@@ -28,10 +26,11 @@ import User from "@/components/atoms/user.vue";
       <div class="flex gap-4 items-center">
         <span class="text-white"> Product development </span>
         <div class="flex gap-2 items-center text-white">
-          <User />
-          <User />
-          <User />
-          <User />
+          <i class="fa-solid fa-circle-user"></i>
+          <i class="fa-solid fa-circle-user"></i>
+          <i class="fa-solid fa-circle-user"></i>
+          <i class="fa-solid fa-circle-user"></i>
+
           <i class="fa-solid fa-circle-plus text-slate-50"></i>
         </div>
       </div>

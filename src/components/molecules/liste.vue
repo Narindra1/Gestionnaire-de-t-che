@@ -1,5 +1,5 @@
 <script setup>
-import Cart from "@/components/molecules/cart.vue";
+import Cart from "@/components/organisms/cart.vue";
 </script>
 
 <template>

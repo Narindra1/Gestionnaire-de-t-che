@@ -1,10 +1,27 @@
 @import "./base.css";
 @import "tailwindcss";
 @import "@fortawesome/fontawesome-free/css/all.css";
+/* .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+} */
+* {
+  /* margin: 0;
+  padding: 0; */
+  /* box-sizing: border-box; */
+}
+/* html,
+body {
+  width: 100vw;
+} */
 
 @theme {
   --color-second: #898c97;
   --color-tertiaire: #3a4042;
+  --color-sombre: #2f3436;
   --color-quartaire: #579dff;
   --color-cinquaire: #89bdff;
   --color-bleu: #210aa8;

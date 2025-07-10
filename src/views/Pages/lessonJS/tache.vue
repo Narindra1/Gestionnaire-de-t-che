@@ -1,12 +1,13 @@
-export const taches = [
+<script setup>
+const taches = [
   {
     id: 1,
-    titre: "Développement interface ",
+    titre: "Développement interface utilisateur",
     description: "Créer l’interface principale du tableau de bord.",
     objectifsSpecifiques:
       "Concevoir une maquette, l’implémenter, et la faire valider.",
     contexteProjet: "Projet de gestion de tâches collaboratif.",
-    pieceJointe: "mockup.png",
+    pieceJointe: "mockup-interface.png",
     dateDebut: "2025-06-01",
     dateLimite: "2025-06-15",
     dureeEstimee: "2 semaines",
@@ -31,12 +32,12 @@ export const taches = [
   },
   {
     id: 2,
-    titre: "Rédaction documentation ",
+    titre: "Rédaction documentation technique",
     description: "Écrire la documentation complète de l’API backend.",
     objectifsSpecifiques:
       "Lister les endpoints, expliquer les paramètres, ajouter des exemples.",
     contexteProjet: "Documentation destinée aux développeurs intégrateurs.",
-    pieceJointe: "doc.pdf",
+    pieceJointe: "doc-backend-template.pdf",
     dateDebut: "2025-06-03",
     dateLimite: "2025-06-12",
     dureeEstimee: "1 semaine",
@@ -63,7 +64,7 @@ export const taches = [
     objectifsSpecifiques:
       "Créer des cas de test, les exécuter et corriger les anomalies.",
     contexteProjet: "Cycle de validation des livrables du sprint.",
-    pieceJointe: "cas.xlsx",
+    pieceJointe: "tests-cas.xlsx",
     dateDebut: "2025-06-05",
     dateLimite: "2025-06-20",
     dureeEstimee: "1.5 semaines",
@@ -90,7 +91,7 @@ export const taches = [
     objectifsSpecifiques:
       "Préparer le package, le tester et lancer la mise en ligne.",
     contexteProjet: "Livraison version 1.0",
-    pieceJointe: "notes.pdf",
+    pieceJointe: "release-notes-v1.pdf",
     dateDebut: "2025-06-15",
     dateLimite: "2025-06-18",
     dureeEstimee: "3 jours",
@@ -116,7 +117,7 @@ export const taches = [
     description: "Organiser une réunion pour valider les spécifications.",
     objectifsSpecifiques: "Recueillir les retours et ajuster le backlog.",
     contexteProjet: "Suivi du projet avec le client final.",
-    pieceJointe: "compte.docx",
+    pieceJointe: "compte-rendu.docx",
     dateDebut: "2025-06-04",
     dateLimite: "2025-06-04",
     dureeEstimee: "1 jour",
@@ -142,7 +143,7 @@ export const taches = [
     description: "Modéliser et implémenter la base de données.",
     objectifsSpecifiques: "Créer les tables, relations et sécuriser les accès.",
     contexteProjet: "Initialisation de l’infrastructure.",
-    pieceJointe: "schema.png",
+    pieceJointe: "schema-bdd.png",
     dateDebut: "2025-06-02",
     dateLimite: "2025-06-10",
     dureeEstimee: "5 jours",
@@ -168,7 +169,7 @@ export const taches = [
     description: "Concevoir le logo du projet en haute résolution.",
     objectifsSpecifiques: "Proposer 3 maquettes, choisir une version finale.",
     contexteProjet: "Identité visuelle de l’application.",
-    pieceJointe: "logo.ai",
+    pieceJointe: "logo-concepts.ai",
     dateDebut: "2025-06-01",
     dateLimite: "2025-06-07",
     dureeEstimee: "3 jours",
@@ -195,7 +196,7 @@ export const taches = [
     objectifsSpecifiques:
       "Utiliser Lighthouse, détecter les goulots d’étranglement.",
     contexteProjet: "Optimisation front-end avant mise en production.",
-    pieceJointe: "rapport.pdf",
+    pieceJointe: "rapport-performance.pdf",
     dateDebut: "2025-06-08",
     dateLimite: "2025-06-11",
     dureeEstimee: "4 jours",
@@ -247,7 +248,7 @@ export const taches = [
     description: "Configurer l’intégration continue avec GitHub Actions.",
     objectifsSpecifiques: "Exécuter les tests automatiquement à chaque push.",
     contexteProjet: "Amélioration du workflow de déploiement.",
-    pieceJointe: "ci.yml",
+    pieceJointe: "ci-config.yml",
     dateDebut: "2025-06-06",
     dateLimite: "2025-06-09",
     dureeEstimee: "2 jours",
@@ -268,3 +269,94 @@ export const taches = [
     },
   },
 ];
+console.log(taches);
+
+function getList() {
+  let listes = [];
+  let newListes = [];
+
+  // ========================================
+  for (let i = 0; i < taches.length; i++) {
+    let liste = taches[i].liste;
+    console.log(liste);
+    if (!newListes.includes(liste.id)) {
+      console.log("push");
+      listes.push(liste);
+
+      newListes.push(liste.id);
+    }
+  }
+
+  // =======================================
+  /* listes = taches.map((e) => {
+    return e.listes;
+  });
+
+  // spread operator
+  // user = {
+
+  // }
+  // admin = {...user , role:"admin"}
+
+  newListes = listes.map((e) => {
+    return JSON.stringify(e);
+  });
+
+  newListes = [...new Set(newListes)];
+
+  newListes = newListes.map((e) => {
+    return JSON.parse(e);
+  });
+*/
+  // =======================================
+
+  return newListes;
+}
+let test1 = getList();
+console.log("valin'ilay tes1:", test1);
+
+console.log(
+  "//========================================================================================="
+);
+/*let tableauId = [];
+
+for (let i = 0; i < taches.length; i++) {
+  let id = taches[i].liste.id;
+  tableauId.push(id);
+}*/
+function getCartsForList(taches, idList) {
+  let tache = [];
+  let idListe = 0;
+  let tasks = [];
+
+  for (let i = 0; i < taches.length; i++) {
+    tache = taches[i];
+    idListe = taches[i].liste.id;
+
+    if (idListe == idList) {
+      tasks.push(tache);
+    }
+  }
+
+  return tasks;
+}
+let testa = getCartsForList(taches, 1);
+let testb = getCartsForList(taches, 2);
+let testc = getCartsForList(taches, 3);
+let testd = getCartsForList(taches, 4);
+let teste = getCartsForList(taches, 5);
+let testf = getCartsForList(taches, 6);
+let testg = getCartsForList(taches, 7);
+let testh = getCartsForList(taches, 8);
+console.log("Valin'ilay test 2", testa);
+console.log("Valin'ilay test 2", testb);
+console.log("Valin'ilay test 2", testc);
+console.log("Valin'ilay test 2", testd);
+console.log("Valin'ilay test 2", teste);
+console.log("Valin'ilay test 2", testf);
+console.log("Valin'ilay test 2", testg);
+console.log("Valin'ilay test 2", testh);
+</script>
+<template>
+  <h3>ANDRANA FONCTION GETLIST</h3>
+</template>
